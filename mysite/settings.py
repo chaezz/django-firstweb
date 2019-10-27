@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1&o)x@rfvko=+c)4mubk8fe81hz&+2g^7iz^6lks9cg#16nok^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'Sermini94.pythonanywhere.com'
 
 ALLOWED_HOSTS = []
 

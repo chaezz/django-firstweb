@@ -19,6 +19,8 @@ from . import views
 urlpatterns = [
     # ^$ 는 현재 폴더를 의미
     url(r'^$',views.index, name = 'polls'),
-    url(r'^dojoin/', views.dojoin, name='dojoin'),
+    url(r'^register/',views.register, ),
+    url(r'^list/',views.list, ),
+    # url(r'^dojoin/', views.dojoin, name='dojoin'),
 
 ]

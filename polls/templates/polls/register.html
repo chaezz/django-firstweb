@@ -28,49 +28,54 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">회원가입</div>
       <div class="card-body">
-        <form action= "/polls/dojoin/" method="post"> {% csrf_token %} <!--토큰 보안을 위해 csrf 선언--> 
+        <form action= "/polls/signin/" method="POST"> {% csrf_token %} <!--토큰 보안을 위해 csrf 선언--> 
           <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="id" class="form-control" placeholder="id" required="required" autofocus="autofocus">
+              <input type="text" name="user_id" class="form-control" placeholder="id" required="required" autofocus="autofocus">
               <label for="id">회원번호(자동부여)</label>
             </div>                                      
           </div>
           <div class="form-group">
               <div class="form-label-group">
-                  <input type="text" id="name" class="form-control" placeholder="name" required="required" autofocus="autofocus">
+                  <input type="text" name="name" class="form-control" placeholder="name" required="required" autofocus="autofocus">
                   <label for="name">이름</label>
               </div>                                      
           </div>
           <div class="form-group">
               <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                  <input type="password" name="pw" class="form-control" placeholder="Password" required="required">
                   <label for="inputPassword">Password</label>
               </div>  
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" id="inputBirthday" class="form-control" placeholder="Birthday" required="required">
+              <input type="text" name="birth" class="form-control" placeholder="Birthday" required="required">
               <label for="inputBirthday">생년월일</label>
             </div>  
           </div>
           <div class="form-group"> 성별
             <div class="form-row">            
               <div class="col-md-6">                
-                <div class="form-label-group">                 
-                     <input type="radio" id="inputgender" class="form-control" placeholder="man" required="required" value="M">
-                 　　　　   　　　　　남                    
+                  <div class="checkbox">
+                      <label>
+                        남
+                        <input type="checkbox" name ="gender" value="M">                        
+                      </label>
+                  </div>                  
                 </div>
-              </div>
               <div class="col-md-6">
-                <div class="form-label-group">                  
-                     <input type="radio" id="inputgender" class="form-control" placeholder="woman" required="required" value="W">　　　　　　　　여                     
-                </div>
+                  <div class="checkbox">
+                      <label>
+                        여
+                        <input type="checkbox" name ="gender" value="W">                        
+                      </label>
+                    </div>
               </div>    
            </div>
           </div> 
           <div class="form-group">
              <div class="form-label-group">               
-               <select class="form-control" id="subject" required="required">              
+               <select class="form-control" name="subject" required="required">              
                  <option value="1">1</option>
                  <option value="2">2</option>
                  <option value="3">3</option>
@@ -86,10 +91,10 @@
           </div>     
       
   
-          <a class="btn btn-primary btn-block" href="login.html">회원가입</a>
+          <a class="btn btn-primary btn-block">회원가입</a>
         </form>
           <br></br>
-          <a class="btn btn-primary btn-block" href="login.html">취소</a>
+          <a class="btn btn-primary btn-block">취소</a>
           <!-- <a class="d-block small mt-3" href="login.html">Login Page</a> -->
           <!-- <a class="d-block small" href="forgot-password.html">Forgot Password?</a> -->
         

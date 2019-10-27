@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> 회원목록 </title>
+
+</head>
+
+<body>
+{% for col in memberlist %}
+{{col.user_id}} | {{col.name}} | {{col.gender}} | {{col.subject}}
+{% endfor %}
+</body>
+
+</html>
