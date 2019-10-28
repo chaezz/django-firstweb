@@ -1,0 +1,10 @@
+깃허브 push하는법
+
+cmd창에 "git push" 입력
+
+
+문제가 (lf will be replaced by crlf) 있을 때
+cmd 창에 git config core.autocrlf true 입력
+
+
+

@@ -20,6 +20,7 @@ urlpatterns = [
     # ^$ 는 현재 폴더를 의미
     url(r'^$',views.index, name = 'polls'),
     url(r'^register/',views.register, ),
+    url(r'^forgotpassword/',views.forgotpassword, ),
     url(r'^list/',views.list, ),
     # url(r'^dojoin/', views.dojoin, name='dojoin'),
 
