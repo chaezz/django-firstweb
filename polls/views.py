@@ -11,24 +11,25 @@ def index(request):
 # 회원가입 버튼 클릭시
 def signin(request):
     if request.method == 'POST' :        
-        new_user = WebUser.object.create_user(user_id=request.POST["user_id"],name=request.POST["name"],pw=request.POST["pw"],birth=request.POST["birth"],gender=request.POST["gender"],subject=request.POST["subject"],)
-
-    return render(request, 'polls/login.html',)
+        new_user = WebUser(user_id=request.POST["user_id"],name=request.POST["name"],pw=request.POST["pw"],birth=request.POST["birth"],gender=request.POST["gender"],subject=request.POST["subject"],)
+        print("회원가입성공")        
+        new_user.save()
+    return render(request, 'polls/login.html')
 
 # 로그인 버튼 클릭시
 def login(request):
-    if request.method == 'POST' :  
-        user_id = request.POST['user_id']
-        pw = request.POST['pw']
-        user = auth.authenticate(request, user_id=user_id, pw=pw)
-        if user is not None:
-            auth.login(request,user)
-            return redirect('home')
-        else:
-            return render(request, 'polls/login.html', {'error': 'user id or password is incorrect'})    
+    m = WebUser.objects.get(user_id=request.POST['user_id'])
+    if m.pw == request.POST['pw']:
+        # request.session['user_id'] = m.id 
+        user_id = request.POST["user_id"]
+        pw = request.POST["pw"]       
+        response = render(request, 'polls/index.html')
+        response.set_cookie('user_id',user_id)
+        response.set_cookie('pw',pw)                
+        return response
     else:
-        return redirect('register')
-
+        return HttpResponse("Your username or password didn't match.")
+   
 
 
 

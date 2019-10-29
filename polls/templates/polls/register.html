@@ -28,28 +28,28 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">회원가입</div>
       <div class="card-body">
-        <form action= "/polls/signin/" method="POST"> {% csrf_token %} <!--토큰 보안을 위해 csrf 선언--> 
+        <form action= "/signin/" method="POST"> {% csrf_token %} <!--토큰 보안을 위해 csrf 선언--> 
           <div class="form-group">
             <div class="form-label-group">
-              <input type="text" name="user_id" class="form-control" placeholder="id" required="required" autofocus="autofocus">
+              <input type="text" id="user_id" name="user_id" class="form-control" placeholder="id" required="required" autofocus="autofocus">
               <label for="id">회원번호(자동부여)</label>
             </div>                                      
           </div>
           <div class="form-group">
               <div class="form-label-group">
-                  <input type="text" name="name" class="form-control" placeholder="name" required="required" autofocus="autofocus">
+                  <input type="text" id="name" name="name" class="form-control" placeholder="name" required="required" autofocus="autofocus">
                   <label for="name">이름</label>
               </div>                                      
           </div>
           <div class="form-group">
               <div class="form-label-group">
-                  <input type="password" name="pw" class="form-control" placeholder="Password" required="required">
+                  <input type="password" id="pw" name="pw" class="form-control" placeholder="Password" required="required">
                   <label for="inputPassword">Password</label>
               </div>  
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="text" name="birth" class="form-control" placeholder="Birthday" required="required">
+              <input type="text" id="birth"  name="birth" class="form-control" placeholder="Birthday" required="required">
               <label for="inputBirthday">생년월일</label>
             </div>  
           </div>
@@ -59,7 +59,7 @@
                   <div class="checkbox">
                       <label>
                         남
-                        <input type="checkbox" name ="gender" value="M">                        
+                        <input type="checkbox" id="gender" name ="gender" value="M">                        
                       </label>
                   </div>                  
                 </div>
@@ -67,7 +67,7 @@
                   <div class="checkbox">
                       <label>
                         여
-                        <input type="checkbox" name ="gender" value="W">                        
+                        <input type="checkbox" id="gender" name ="gender" value="W">                        
                       </label>
                     </div>
               </div>    
@@ -75,7 +75,7 @@
           </div> 
           <div class="form-group">
              <div class="form-label-group">               
-               <select class="form-control" name="subject" required="required">              
+               <select class="form-control" id="subject" name="subject" required="required">              
                  <option value="1">1</option>
                  <option value="2">2</option>
                  <option value="3">3</option>
@@ -91,7 +91,7 @@
           </div>     
       
   
-          <a class="btn btn-primary btn-block" href="/">회원가입</a>
+          <input type="submit" class="btn btn-primary btn-block" title="회원가입" >
         </form>
           <br></br>
           <a class="btn btn-primary btn-block" href="/"> 취소</a>

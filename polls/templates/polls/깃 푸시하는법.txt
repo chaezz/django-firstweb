@@ -1,5 +1,7 @@
 깃허브 push하는법
-
+cmd창에 "git add ."
+cmd창에 "git commit -m "수정내용"" 입력
+결과로는
 cmd창에 "git push" 입력
 
 
