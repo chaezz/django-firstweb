@@ -22,8 +22,8 @@ urlpatterns = [
     url(r'^signin/',views.signin, name='signin' ),
     url(r'^login/',views.login, name='login' ),
     url(r'^register/',views.register, ),
-    url(r'^forgotpassword/',views.forgotpassword,),
-    url(r'^list/',views.list, ),
+    url(r'^index1/',views.index1, ),
+    url(r'^book/<uuid:isbn>/',views.bookdetail, name='bookdetail'),
     # url(r'^dojoin/', views.dojoin, name='dojoin'),
 
 ]

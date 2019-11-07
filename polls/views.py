@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import *
+from .models import WebUser, Book
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.shortcuts import get_object_or_404
 
 # 초기화면
 def index(request):    
@@ -30,7 +31,15 @@ def login(request):
     else:
         return HttpResponse("Your username or password didn't match.")
    
+# test
+def index1(request):
+    Books = Book.objects.all()
+    context = { 'Books' : Books}    
+    return render(request, 'polls/index1.html', context)
 
+def bookdetail(request,isbn):
+    book = get_object_or_404(Book, isbn=isbn )
+    return render(request, 'polls/bookdetail.html', {'book': book})
 
 
 def home(request):    

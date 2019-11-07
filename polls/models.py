@@ -9,3 +9,9 @@ class WebUser(models.Model):
     birth = models.CharField(max_length=10)
     gender = models.CharField(max_length=1)
     subject = models.CharField(max_length=1)
+
+class Book(models.Model):
+    isbn = models.CharField(max_length=13)
+    name = models.CharField(max_length=100)
+    author = models.CharField(max_length=20)
+    subject = models.CharField(max_length=1)
