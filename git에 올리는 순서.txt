@@ -1,0 +1,5 @@
+Git 업데이트 하기 (아래 순서대로 cmd 창에 입력)
+
+git add .
+git commit -m '수정내용'
+git push

@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.http import HttpResponse
-from .models import WebUser, Book
+from .models import WebUser, Book, Booklist
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.shortcuts import get_object_or_404
@@ -24,7 +25,7 @@ def login(request):
         # request.session['user_id'] = m.id 
         user_id = request.POST["user_id"]
         pw = request.POST["pw"]       
-        response = render(request, 'polls/index.html')
+        response = redirect('index1')
         response.set_cookie('user_id',user_id)
         response.set_cookie('pw',pw)                
         return response
@@ -37,9 +38,16 @@ def index1(request):
     context = { 'Books' : Books}    
     return render(request, 'polls/index1.html', context)
 
-def bookdetail(request,isbn):
-    book = get_object_or_404(Book, isbn=isbn )
+def bookdetail(request,pk):
+    book = get_object_or_404(Book, pk=pk)
     return render(request, 'polls/bookdetail.html', {'book': book})
+
+def rent(request,pk):
+    book = Book.objects.get(pk=pk)
+    selection = request.POST['rent']
+    rentlist = Booklist(user_id = request.COOKIES.get('user_id'), isbn = book.isbn, date = "현재날짜")
+    rentlist.save()
+    return HttpResponse(book.name + " 책의 대여가 완료되었습니다.")   
 
 
 def home(request):    

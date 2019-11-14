@@ -58,7 +58,8 @@
         <ul>
           {% for book in Books %}
            <li>
-              <a href="{% url 'bookdetail' isbn=book.isbn %}">{{ book.name }}</a> ({{book.author}}), ({{book.isbn}})
+              <a href="{% url 'bookdetail' pk=book.isbn %}">{{ book.name }}</a> ({{book.author}}), ({{book.isbn}})
+           
            </li>
           {% endfor %}
         </ul>

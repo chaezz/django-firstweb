@@ -55,10 +55,14 @@
         <h1 class="mt-5">Title : {{book.name}}</h1>        
         <ul>          
            <li>
-              <p><strong>Author:</strong> <a href="">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
+              <p><strong>Author:</strong>{{ book.author }}</p> <!-- author detail link not yet defined -->
               <p><strong>ISBN:</strong> {{ book.isbn }}</p>  
               <p><strong>Genre:</strong>{{ book.subject }} </p>              
-           </li>
+           </li>        
+              <form action = "/rent/{{book.isbn}}/" method="post">   
+              {% csrf_token %}
+              <button name = "rent" value="{{book.isbn}}"> 대여 </button>
+              </form>
         </ul>
         {% endblock %}
       </div>
