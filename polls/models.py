@@ -2,7 +2,7 @@ from django.db import models
 # manage.py makemigrations polls
 # Create your models here.
 class WebUser(models.Model):
-    user_id = models.CharField(max_length=10)
+    user_id = models.CharField(primary_key = True, max_length=10)
     name = models.CharField(max_length=10)
     pw = models.CharField(max_length=10)
     birth = models.CharField(max_length=10)
@@ -16,8 +16,11 @@ class Book(models.Model):
     author = models.CharField(max_length=20)
     subject = models.CharField(max_length=1)
 
+    def __str__(self):
+        return self.isbn
 
-class Booklist(models.Model):
+
+class Rentlist(models.Model):
     user_id = models.CharField(max_length=10)
-    isbn = models.CharField(max_length=13)
+    isbn = models.ForeignKey(Book, on_delete=models.CASCADE)
     date = models.CharField(max_length=20)

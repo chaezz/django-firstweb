@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^index1/',views.index1, name = 'index1' ),
     url(r'^book/(?P<pk>[0-9]+)/$' ,views.bookdetail, name='bookdetail'),
     url(r'^rent/(?P<pk>[0-9]+)/$', views.rent, name='rent'),
+    url('test1', views.test1),
+    url(r'^rentlist/', views.rentlist1, name='rentlist1'),
     # url(r'^dojoin/', views.dojoin, name='dojoin'),
     # 
 ]
