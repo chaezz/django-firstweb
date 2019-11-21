@@ -3,6 +3,6 @@ from .models import *
 
 admin.site.register(WebUser)
 admin.site.register(Book)
-admin.site.register(Rentlist)
+admin.site.register(Rentlist1)
 
 # Register your models here.

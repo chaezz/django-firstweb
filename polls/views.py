@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse
-from .models import WebUser, Book, Rentlist
+from .models import WebUser,Book,Rentlist1
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.shortcuts import get_object_or_404
@@ -21,6 +21,7 @@ def signin(request):
 # 로그인 버튼 클릭시
 def login(request):
     m = WebUser.objects.get(user_id=request.POST['user_id'])
+    m.pw = str(m.pw)    
     if m.pw == request.POST['pw']:
         # request.session['user_id'] = m.id 
         user_id = request.POST["user_id"]
@@ -45,21 +46,14 @@ def bookdetail(request,pk):
 def rent(request,pk):
     book = Book.objects.get(pk=pk)
     selection = request.POST['rent']
-    rentlist = Rentlist(user_id = request.COOKIES.get('user_id'), isbn = book, date = "현재날짜")
+    rentlist = Rentlist1(user_id = request.COOKIES.get('user_id'), isbn = book, date = "현재날짜")
     rentlist.save()
     return HttpResponse(" 회원님의 " + book.name + " 책의 대여가 완료되었습니다.") 
 
-def rentlist1(request):
-    booklist = Rentlist.objects.filter(user_id = request.COOKIES.get('user_id'))
+def rentlist2(request):
+    booklist = Rentlist1.objects.filter(user_id = request.COOKIES.get('user_id'))
     context = {'booklist' : booklist}
     return render(request, 'polls/test.html', context)
-
-
-def test1(request):
-    book = Book.objects.get(isbn = 6543)
-    rentlist = Rentlist.objects.create(user_id = request.COOKIES.get('user_id'), isbn = book, date = "현재날짜")
-    rentlist.save()    
-    return HttpResponse(str(book.isbn) + "입니다.")
 
 def home(request):    
     return render(request, 'polls/index.html')
@@ -71,8 +65,6 @@ def register(request):
 # 비밀번호찾기 링크
 def forgotpassword(request):
     return render(request, 'polls/forgot-password.html')
-
-
 
 # 회원 목록 test
 def list(request):
