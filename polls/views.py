@@ -46,9 +46,10 @@ def bookdetail(request,pk):
 def rent(request,pk):
     book = Book.objects.get(pk=pk)
     selection = request.POST['rent']
-    rentlist = Rentlist1(user_id = request.COOKIES.get('user_id'), isbn = book, date = "현재날짜")
+    user = WebUser.objects.get(user_id= request.COOKIES.get('user_id'))
+    rentlist = Rentlist1(user_id = user, isbn = book, date = "현재날짜")
     rentlist.save()
-    return HttpResponse(" 회원님의 " + book.name + " 책의 대여가 완료되었습니다.") 
+    return HttpResponse(user.user_id," 회원님의 " + book.name + " 책의 대여가 완료되었습니다.") 
 
 def rentlist2(request):
     booklist = Rentlist1.objects.filter(user_id = request.COOKIES.get('user_id'))

@@ -6,15 +6,17 @@ class WebUser(models.Model):
     user_id = models.CharField(primary_key = True, max_length=10)
     name = models.CharField(max_length=10)
     pw = models.CharField(max_length=10)
-    birth = models.CharField(max_length=10  )
+    birth = models.CharField(max_length=10)
     gender = models.CharField(max_length=1)
     subject = models.CharField(max_length=1)
+    def __str__(self):
+        return str(self.user_id)
 
 #pk값을 지정해야만 그 값을 인자로 받을 수 있음....
 class Book(models.Model):
     isbn = models.CharField(primary_key = True, max_length=13)
-    name = models.CharField(max_length=200)
-    author = models.CharField(max_length=200)
+    name = models.CharField(max_length=200 , null=True)
+    author = models.CharField(max_length=200,null=True)
     subject = models.CharField(max_length=1)
 
     def __str__(self):
