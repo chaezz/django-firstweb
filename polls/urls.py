@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^$',views.index, name = 'polls'),
     url(r'^signin/',views.signin, name='signin' ),
     url(r'^login/',views.login, name='login' ),
+    url(r'^logout/',views.logout, name='logout' ),
     url(r'^register/',views.register, ),
     url(r'^index1/',views.index1, name = 'index1' ),
     url(r'^book/(?P<pk>[0-9]+)/$' ,views.bookdetail, name='bookdetail'),

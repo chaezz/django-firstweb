@@ -33,11 +33,20 @@ import sqlite3
 # 암튼 꾸역꾸역 넣기 성공!
 # 인줄알았으나 user_id가 안들어가짐... 소숫점있어서 그런듯..
 # int형으로 바꾸니까 해결!
-df = pd.read_pickle("500x500rentlist(수정).pkl")
-df = df.rename(columns={'회원번호':'user_id_id','ISBN':'isbn_id'})
-df['date'] = 1
-df['user_id_id'] = df['user_id_id'].astype('int')
-print(df.head())
+# df = pd.read_pickle("500x500rentlist(수정).pkl")
+# df = df.rename(columns={'회원번호':'user_id_id','ISBN':'isbn_id'})
+# df['date'] = 1
+# df['user_id_id'] = df['user_id_id'].astype('int')
+# df['isbn_id'] = df['isbn_id'].astype('str')
+# df['isbn_id'] = df['isbn_id'].str.strip()
+# print(df['isbn_id'].head())
+# con = sqlite3.connect("C:/Users/USER/mydjango/test/django-firstweb/db.sqlite3")
+# df.to_sql('polls_rentlist1',con, if_exists='append',index=False)
+# con.close()
+
+
+df = pd.read_pickle("recommendlist(db).pkl")
+df = df.rename(columns={'user_id':'user_id_id','isbn':'isbn_id'})
 con = sqlite3.connect("C:/Users/USER/mydjango/test/django-firstweb/db.sqlite3")
-df.to_sql('polls_rentlist1',con, if_exists='append',index=False)
+df.to_sql('polls_recommendlist',con, if_exists='append',index=False)
 con.close()

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse
-from .models import WebUser,Book,Rentlist1
+from .models import WebUser,Book,Rentlist1,Recommendlist
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.shortcuts import get_object_or_404
@@ -27,17 +27,25 @@ def login(request):
         user_id = request.POST["user_id"]
         pw = request.POST["pw"]       
         response = redirect('index1')
-        response.set_cookie('user_id',user_id)
-        response.set_cookie('pw',pw)                
+        response.set_cookie('user_id',user_id)        
         return response
     else:
         return HttpResponse("Your username or password didn't match.")
-   
+# 로그아웃
+def logout(request):
+    response = render(request, 'polls/login.html')
+    response.delete_cookie('user_id')
+    response.delete_cookie('pw')
+    return response 
+
 # test
 def index1(request):
-    Books = Book.objects.all()
-    context = { 'Books' : Books}    
+    recolist = Recommendlist.objects.filter(user_id = request.COOKIES.get('user_id'))
+    context = {'recolist' : recolist}
     return render(request, 'polls/index1.html', context)
+    # Books = Book.objects.all()
+    # context = { 'Books' : Books}    
+    # return render(request, 'polls/index1.html', context)
 
 def bookdetail(request,pk):
     book = get_object_or_404(Book, pk=pk)
@@ -49,7 +57,7 @@ def rent(request,pk):
     user = WebUser.objects.get(user_id= request.COOKIES.get('user_id'))
     rentlist = Rentlist1(user_id = user, isbn = book, date = "현재날짜")
     rentlist.save()
-    return HttpResponse(user.user_id," 회원님의 " + book.name + " 책의 대여가 완료되었습니다.") 
+    return HttpResponse(user.user_id+" 회원님의 " + book.name + " 책의 대여가 완료되었습니다.") 
 
 def rentlist2(request):
     booklist = Rentlist1.objects.filter(user_id = request.COOKIES.get('user_id'))

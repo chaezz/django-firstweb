@@ -27,3 +27,8 @@ class Rentlist1(models.Model):
     user_id = models.ForeignKey(WebUser, on_delete=models.CASCADE)
     isbn = models.ForeignKey(Book, on_delete=models.CASCADE)
     date = models.CharField(max_length=20)
+
+
+class Recommendlist(models.Model):
+    user_id = models.ForeignKey(WebUser, on_delete=models.CASCADE)
+    isbn = models.ForeignKey(Book, on_delete=models.CASCADE) 
